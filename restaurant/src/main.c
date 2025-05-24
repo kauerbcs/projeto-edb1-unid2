@@ -3,7 +3,7 @@
 #include "pedido.h"
 #include "fila.h"
 
-//asdasd
+//asd
 
 void exibir_menu() {
     printf("\n== Restaurante ==\n");
