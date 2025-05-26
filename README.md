@@ -30,8 +30,6 @@ projeto-edb1-unid2/
 
 
 ## Como Executar
-1. Clone o repositório:
-   sh
    git clone https://github.com/kauerbcs/projeto-edb1-unid2.git
 2. Acesse a pasta do projeto:
   cd projeto-edb1-unid2
