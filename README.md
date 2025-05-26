@@ -12,17 +12,17 @@ projeto-edb1-unid2/
 
 │── src/
 
-   ├── main.c
-   
-   ├── fila.c
-   
-   ├── pedido.c
+├   ├── main.c
+├  
+├   ├── fila.c
+├
+├   ├── pedido.c
 
 │── include/
 
-   ├── fila.
-
-   ├── pedido.h
+├   ├── fila.
+├
+├   ├── pedido.h
 
 │── README.md
 
