@@ -9,6 +9,7 @@ Este projeto faz parte da disciplina de Estrutura de Dados Básicos 1 (EDB1).
 
 ## Estrutura do Projeto
 projeto-edb1-unid2/
+
 │── src/
 
 │   ├── main.c
