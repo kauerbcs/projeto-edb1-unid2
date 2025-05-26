@@ -25,7 +25,4 @@ int desenfileirar(Fila *fila, int *codigo_prato);
 // Exibe todos os pedidos em processamento
 void listar_fila(const Fila *fila);
 
-// Libera a memória alocada para a fila
-void liberar_fila(Fila *fila);
-
 #endif // FILA_H
