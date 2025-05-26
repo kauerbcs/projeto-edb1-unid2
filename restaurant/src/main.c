@@ -16,6 +16,30 @@ void exibir_menu() {
     printf("0. Sair\n");
     printf("Escolha: ");
 }
+void exibir_cardapio() {
+    printf("\n=== CARDAPIO ===\n");
+
+    printf("\nEntradas:\n");
+    printf("1. Sopa de Cebola\n");
+    printf("2. Salada Caesar\n");
+    printf("3. Bruschetta\n");
+    printf("4. Carpaccio de Carne\n");
+    printf("5. Camarao ao Alho\n");
+
+    printf("\nPratos Principais:\n");
+    printf("6. Lasanha a Bolonhesa\n");
+    printf("7. File Mignon com Fritas\n");
+    printf("8. Frango Grelhado com Legumes\n");
+    printf("9. Bacalhau a Gomes de Sa\n");
+    printf("10. Risoto de Cogumelos\n");
+
+    printf("\nSobremesas:\n");
+    printf("11. Tiramisu\n");
+    printf("12. Cheesecake de Frutas Vermelhas\n");
+    printf("13. Mousse de Chocolate\n");
+    printf("14. Pudim de Leite\n");
+    printf("15. Sorvete de Baunilha com Calda de Morango\n");
+}
 
 int main() {
     ListaPedido lista;
@@ -30,26 +54,27 @@ int main() {
         scanf("%d", &opcao);
         switch (opcao) {
             case 1:
-                printf("Codigo do prato: ");
-                scanf("%d", &cod);
-                adicionar_pedido(&lista, cod);
+                exibir_cardapio();
+                adicionar_pedido(&lista);
                 break;
             case 2:
                 printf("Codigo a remover: ");
                 scanf("%d", &cod);
                 if (!remover_pedido(&lista, cod))
-                    printf("Prato nao encontrado.\n");
+                    printf("Pedido nao encontrado.\n");
                 break;
             case 3:
-                if (transferir_para_fila(&lista, &cod)) {
-                    enfileirar(&fila, cod);
-                    printf("Pedido %d enviado para cozinha.\n", cod);
+                Pedido *pedido = retirar_primeiro_pedido(&lista);
+                if (pedido) {
+                    enfileirar(&fila, pedido);
+                    printf("Pedido %d enviado para cozinha.\n", pedido->numero_pedido);
                 } else {
                     printf("Nao ha proximos pedidos.\n");
                 }
                 break;
+        
             case 4:
-                listar_pedidos_pendentes(&lista);
+                listar_pedidos(&lista);
                 break;
             case 5:
                 listar_fila(&fila);

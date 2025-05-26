@@ -1,31 +1,41 @@
 #ifndef FILA_H
 #define FILA_H
+#include "pedido.h"  // Importa a definição de Pedido
 
-// Estrutura de nó de fila
+/*
+Fila encadeada usada para gerenciar os pedidos em processamento na cozinha.
+Cada nó da fila representa um pedido completo, com número único e lista de pratos.
+A fila segue a lógica FIFO (First In, First Out) — o primeiro pedido que chega
+é o primeiro a ser preparado.
+*/
+
+// Estrutura de nó da fila, que contém um pedido completo
 typedef struct NoFila {
-    int codigo_prato;
-    struct NoFila *proximo;
+    Pedido *pedido;           // Ponteiro para o pedido
+    struct NoFila *proximo;   // Próximo nó da fila
 } NoFila;
 
 // Estrutura da fila
 typedef struct {
-    NoFila *frente;
-    NoFila *tras;
+    NoFila *frente;           // Início da fila
+    NoFila *tras;             // Fim da fila
 } Fila;
+
+// ==== Funções ====
 
 // Inicializa a fila vazia
 void inicializar_fila(Fila *fila);
 
-// Enfileira um novo pedido
-void enfileirar(Fila *fila, int codigo_prato);
+// Enfileira um novo pedido na cozinha
+void enfileirar(Fila *fila, Pedido *pedido);
 
 // Desenfileira o pedido da frente
-int desenfileirar(Fila *fila, int *codigo_prato);
+Pedido* desenfileirar(Fila *fila);
 
-// Exibe todos os pedidos em processamento
+// Lista todos os pedidos em processamento (mostra número e pratos)
 void listar_fila(const Fila *fila);
 
-// Libera a memória alocada para a fila
+// Libera toda a memória alocada para a fila (mas não libera os pedidos!)
 void liberar_fila(Fila *fila);
 
 #endif // FILA_H
