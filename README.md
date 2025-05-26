@@ -10,13 +10,21 @@ Este projeto faz parte da disciplina de Estrutura de Dados Básicos 1 (EDB1).
 ## Estrutura do Projeto
 projeto-edb1-unid2/
 │── src/
+
 │   ├── main.c
+
 │   ├── modulo1.c
+
 │   ├── modulo2.c
+
 │── include/
+
 │   ├── modulo1.h
+
 │   ├── modulo2.h
+
 │── README.md
+
 │── Makefile
 
 
