@@ -26,5 +26,7 @@ int transferir_para_fila(ListaPedido *lista, int *codigo_prato);
 
 // Exibe todos os pedidos pendentes na lista
 void listar_pedidos_pendentes(const ListaPedido *lista);
+// Libera a memória alocada para a lista de pedidos
+void liberar_lista(ListaPedido *lista);
 
 #endif // PEDIDO_H
