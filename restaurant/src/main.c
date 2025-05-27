@@ -5,7 +5,6 @@
 
 
 
-
 void exibir_menu() {
     printf("\n== Restaurante ==\n");
     printf("1. Adicionar pedido (salao)\n");
