@@ -31,7 +31,19 @@ typedef struct {
 // Inicializa a lista de pedidos
 void inicializar_lista(ListaPedido *lista);
 
+//remove um prato específico de um pedido
 
+int remover_prato_do_pedido(Pedido *pedido, int codigo_prato);
+
+
+//busca um pedido pelo número do pedido
+Pedido* buscar_pedido(ListaPedido *lista, int numero_pedido);
+
+// Busca um prato específico dentro de um pedido
+Prato* buscar_prato(Pedido *pedido, int codigo_prato);
+
+
+// Retira o primeiro pedido da lista, retornando o ponteiro para ele
 Pedido* retirar_primeiro_pedido(ListaPedido *lista);
 
 // Cria um novo pedido, permitindo adicionar vários pratos a ele

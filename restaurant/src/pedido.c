@@ -66,14 +66,6 @@ int remover_pedido(ListaPedido *lista, int numero_pedido) {
             if (anterior) anterior->proximo = atual->proximo;
             else lista->inicio = atual->proximo;
 
-            // Liberar a lista de pratos do pedido
-            Prato *p = atual->lista_pratos;
-            while (p) {
-                Prato *temp = p;
-                p = p->proximo;
-                free(temp);
-            }
-
             free(atual);
             printf("Pedido %d removido com sucesso!\n", numero_pedido);
             return 1;  // sucesso
@@ -82,6 +74,57 @@ int remover_pedido(ListaPedido *lista, int numero_pedido) {
         atual = atual->proximo;
     }
     return 0;  // pedido não encontrado
+}
+// Remove um prato específico de um pedido
+// Retorna 1 se sucesso, 0 se não encontrou
+int remover_prato_do_pedido(Pedido *pedido, int codigo_prato) {
+    if (pedido == NULL) return 0;
+
+    Prato *atual = pedido->lista_pratos;
+    Prato *anterior = NULL;
+
+    while (atual) {
+        if (atual->codigo_prato == codigo_prato) {
+            if (anterior == NULL) {
+                // Primeiro prato da lista
+                pedido->lista_pratos = atual->proximo;
+            } else {
+                anterior->proximo = atual->proximo;
+            }
+            free(atual);
+            return 1;  // Sucesso
+        }
+        anterior = atual;
+        atual = atual->proximo;
+    }
+    return 0;  // Prato não encontrado
+}
+
+
+
+// Retorna o ponteiro para o pedido se encontrado, ou NULL se não encontrado
+// Busca um pedido pelo número do pedido, utilizando a lista de pedidos
+Pedido* buscar_pedido(ListaPedido *lista, int numero_pedido) {
+    Pedido *atual = lista->inicio;
+    while (atual) {
+        if (atual->numero_pedido == numero_pedido) {
+            return atual;
+        }
+        atual = atual->proximo;
+    }
+    return NULL;
+}
+
+// Retorna o ponteiro para o prato se encontrado, ou NULL se não encontrado
+Prato* buscar_prato(Pedido *pedido, int codigo_prato) {
+    Prato *atual = pedido->lista_pratos;
+    while (atual) {
+        if (atual->codigo_prato == codigo_prato) {
+            return atual;
+        }
+        atual = atual->proximo;
+    }
+    return NULL;
 }
 
 // Função que remove o primeiro pedido da lista

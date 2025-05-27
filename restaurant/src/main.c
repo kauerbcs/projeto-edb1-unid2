@@ -43,8 +43,8 @@ void exibir_cardapio() {
 int main() {
     ListaPedido lista;
     Fila fila;
+    int opcao, codigo_prato, numero_pedido;
     Pedido *pedido;
-    int opcao, cod;
 
     inicializar_lista(&lista);
     inicializar_fila(&fila);
@@ -58,11 +58,40 @@ int main() {
                 adicionar_pedido(&lista);
                 break;
             case 2:
-                printf("Codigo a remover: ");
-                scanf("%d", &cod);
-                if (!remover_pedido(&lista, cod))
-                    printf("Pedido nao encontrado.\n");
+                printf("Numero do pedido: ");
+                scanf("%d", &numero_pedido);
+
+                // Verifica se o pedido existe
+                pedido = buscar_pedido(&lista, numero_pedido);
+                if (pedido == NULL) {
+                    printf("Pedido nao encontrado!\n");
+                    break;
+                }
+
+                printf("Codigo do prato para remover: ");
+                scanf("%d", &codigo_prato);
+
+                // Verifica se o prato existe no pedido
+                Prato *prato = buscar_prato(pedido, codigo_prato);
+                if (prato == NULL) {
+                    printf("Prato nao encontrado neste pedido!\n");
+                    break;
+                }
+
+                //Faz a remoção
+                if (remover_prato_do_pedido(pedido, codigo_prato)) {
+                    printf("Prato removido com sucesso!\n");
+                    //  Pedido removido se não tiver mais pratos
+                    // Verifica se o pedido ficou sem pratos
+                    if (pedido->lista_pratos == NULL) {
+                        printf("Pedido %d nao possui mais pratos e foi removido.\n", numero_pedido);
+                        remover_pedido(&lista, numero_pedido);
+                    }
+                } else {
+                    printf("Erro ao remover prato.\n");
+                }
                 break;
+
             case 3:
                 pedido = retirar_primeiro_pedido(&lista);
                 if (pedido) {
