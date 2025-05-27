@@ -2,14 +2,11 @@
 #include <stdlib.h>
 #include "../include/fila.h"
 
-/*Fila encadeada simples usada para gerenciar os pedidos que estão sendo
-processados na cozinha. Cada pedido contém o código do prato e um ponteiro
-para o próximo item na fila. A fila permite adicionar pedidos no final
-(enfileirar), remover o pedido que está na frente (desenfileirar) e listar
-os pedidos em processamento. A fila segue a lógica FIFO (o primeiro que
-entra é o primeiro que sai) e cresce dinamicamente conforme os pedidos
-são enviados para a cozinha.
-*/// Inicializa a fila vazia
+/* Implementação de uma fila encadeada para gerenciar pedidos em processamento na cozinha.
+Cada pedido contém uma lista de pratos, identificados por seus códigos, e um ponteiro
+para o próximo pedido na fila
+*/
+// Inicializa a fila vazia
 void inicializar_fila(Fila *fila) {
     fila->frente = NULL;
     fila->tras = NULL;
@@ -73,7 +70,7 @@ void listar_fila(const Fila *fila) {
     }
 }
 
-// Libera toda a memória dos nós da fila (não libera os pedidos!)
+// Libera toda a memória dos nós da fila (não libera os pedidos)
 void liberar_fila(Fila *fila) {
     NoFila *atual = fila->frente;
     while (atual) {

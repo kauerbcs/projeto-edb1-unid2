@@ -1,14 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/pedido.h"
-
-
-/*Lista encadeada simples usada para armazenar os pedidos feitos no salão,
-cada pedido contém o código do prato e um ponteiro para o próximo pedido.
-A lista permite adicionar pedidos no final, remover pedidos específicos e
-transferir o primeiro pedido para a fila de processamento (cozinha).
-A lista cresce dinamicamente conforme os pedidos são adicionados.
-*/
+#include "../include/fila.h"
 // Inicializa a lista de pedidos
 void inicializar_lista(ListaPedido *lista) {
     lista->inicio = NULL;
