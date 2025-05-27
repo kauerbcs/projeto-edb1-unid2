@@ -84,13 +84,26 @@ int remover_pedido(ListaPedido *lista, int numero_pedido) {
     return 0;  // pedido não encontrado
 }
 
+// Função que remove o primeiro pedido da lista
 Pedido* retirar_primeiro_pedido(ListaPedido *lista) {
+    
+    // Se a lista estiver vazia, retorna NULL
     if (!lista->inicio) return NULL;
+
+    // Armazena o primeiro pedido da lista para retorná-lo
     Pedido *pedido = lista->inicio;
+
+    // Atualiza o ponteiro de início para o próximo pedido na lista
     lista->inicio = pedido->proximo;
-    pedido->proximo = NULL; // Para garantir que não está mais ligado à lista
+
+    // Garante que o pedido removido não esteja mais vinculado à lista
+    pedido->proximo = NULL;
+
+    // Retorna o pedido removido para processamento posterior
     return pedido;
 }
+
+
 
 // Lista todos os pedidos e os pratos de cada pedido
 void listar_pedidos(const ListaPedido *lista) {

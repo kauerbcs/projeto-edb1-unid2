@@ -44,6 +44,7 @@ void exibir_cardapio() {
 int main() {
     ListaPedido lista;
     Fila fila;
+    Pedido *pedido;
     int opcao, cod;
 
     inicializar_lista(&lista);
@@ -64,7 +65,7 @@ int main() {
                     printf("Pedido nao encontrado.\n");
                 break;
             case 3:
-                Pedido *pedido = retirar_primeiro_pedido(&lista);
+                pedido = retirar_primeiro_pedido(&lista);
                 if (pedido) {
                     enfileirar(&fila, pedido);
                     printf("Pedido %d enviado para cozinha.\n", pedido->numero_pedido);
